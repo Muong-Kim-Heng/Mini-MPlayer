@@ -23,7 +23,7 @@ const songs = [
         path: 'assets/2.mp3',
         displayName: 'GameBoy',
         cover: 'assets/2.jpg',
-        artist: 'ROSE',
+        artist: 'SEAV GECH',
     },
     {
         path: 'assets/3.mp3',
