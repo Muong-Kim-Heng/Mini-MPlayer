@@ -4,12 +4,12 @@ const image = document.getElementById('cover'),
     currentTimeEl = document.getElementById('current-time'),
     durationEl = document.getElementById('duration'),
     progress = document.getElementById('progress'),
-    playerProgress = document.getElementById('player.progress'),
+    playerProgress = document.getElementById('player-progress'),
     prevBtn = document.getElementById('prev'),
     nextBtn = document.getElementById('next'),
     playBtn = document.getElementById('play'),
     background = document.getElementById('bg-img');
-    
+
 const music = new Audio();
 
 const songs = [
@@ -46,18 +46,18 @@ function togglePlay() {
 
 function playMusic() {
     isPlaying = true;
-    //Change play button icon
+    // Change play button icon
     playBtn.classList.replace('fa-play', 'fa-pause');
-    //Set button hover title
+    // Set button hover title
     playBtn.setAttribute('title', 'Pause');
     music.play();
 }
 
 function pauseMusic() {
     isPlaying = false;
-    //Change pause button icon
+    // Change pause button icon
     playBtn.classList.replace('fa-pause', 'fa-play');
-    //Set button hover title
+    // Set button hover title
     playBtn.setAttribute('title', 'Play');
     music.pause();
 }
@@ -70,7 +70,7 @@ function loadMusic(song) {
     background.src = song.cover;
 }
 
-function ChangeMusic(direction){
+function changeMusic(direction) {
     musicIndex = (musicIndex + direction + songs.length) % songs.length;
     loadMusic(songs[musicIndex]);
     playMusic();
@@ -93,9 +93,9 @@ function setProgressBar(e) {
 }
 
 playBtn.addEventListener('click', togglePlay);
-prevBtn.addEventListener('click', () => ChangeMusic(-1));
-nextBtn.addEventListener('click', () => ChangeMusic(1));
-music.addEventListener('ended', () => ChangeMusic(1));
+prevBtn.addEventListener('click', () => changeMusic(-1));
+nextBtn.addEventListener('click', () => changeMusic(1));
+music.addEventListener('ended', () => changeMusic(1));
 music.addEventListener('timeupdate', updateProgressBar);
 playerProgress.addEventListener('click', setProgressBar);
 
